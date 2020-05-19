@@ -16,7 +16,6 @@ namespace Calculator.WebService
     [System.Web.Script.Services.ScriptService]
     public class CalculatorBase : System.Web.Services.WebService
     {
-
         [WebMethod]
         public decimal Plus(decimal a, decimal b)
         {
