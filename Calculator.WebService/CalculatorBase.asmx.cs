@@ -16,25 +16,25 @@ namespace Calculator.WebService
     [System.Web.Script.Services.ScriptService]
     public class CalculatorBase : System.Web.Services.WebService
     {
-        [WebMethod]
+        [WebMethod(Description = "Plus Operation", CacheDuration = 10)]
         public decimal Plus(decimal a, decimal b)
         {
             return a + b;
         }
 
-        [WebMethod]
+        [WebMethod(Description = "Subtraction Operation", CacheDuration = 10)]
         public decimal Subtraction(decimal a, decimal b)
         {
             return a - b;
         }
 
-        [WebMethod]
+        [WebMethod(Description = "Multiply Operation", CacheDuration = 10)]
         public decimal Multiply(decimal a, decimal b)
         {
             return a * b;
         }
 
-        [WebMethod]
+        [WebMethod(Description = "Multiply Operation", CacheDuration = 10)]
         public decimal Divide(decimal a, decimal b)
         {
             return a / b;
