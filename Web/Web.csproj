@@ -96,6 +96,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\WebServiceRef\Web.WebServiceRef.ArrayOfString.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\WebServiceRef\Web.WebServiceRef.GetAllCalcResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

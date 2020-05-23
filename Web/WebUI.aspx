@@ -18,9 +18,18 @@
             padding-right: 0px;
             padding-bottom: 16px;
         }
-        #lblSol{
-            font-size:5em;
-            color:white;
+
+        #lblSol {
+            font-size: 5em;
+            color: white;
+        }
+        
+        #grdOp tr td {
+            border-top:1px solid black
+        }
+        .table-light tbody+tbody, .table-light td, .table-light th, .table-light thead th
+        {
+            border-color:black
         }
     </style>
 </head>
@@ -60,10 +69,14 @@
                     <asp:Button runat="server" ID="btnDiv" CssClass="btn btn-success" OnClick="btnDiv_Click" Text="/"></asp:Button>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 mt-3" style="text-align:center">
-            <asp:Label runat="server" ID="lblSol" CssClass="Solution"></asp:Label>
+            <div class="col-lg-4 col-md-4 col-sm-4 mt-3" style="text-align: center">
+                <asp:Label runat="server" ID="lblSol" CssClass="Solution"></asp:Label>
             </div>
-    </form>
+
+            <div class="col-lg-3 col-md-3 col-sm-3 mt-3">
+                    <asp:GridView ID="grdOp" runat="server" CssClass="table table-hover table-light"></asp:GridView>
+            </div>
+        </form>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

@@ -16,10 +16,34 @@ namespace Calculator.WebService
     [System.Web.Script.Services.ScriptService]
     public class CalculatorBase : System.Web.Services.WebService
     {
-        [WebMethod(Description = "Plus Operation", CacheDuration = 10)]
+        [WebMethod(Description = "Plus Operation", CacheDuration = 10, EnableSession = true)]
         public decimal Plus(decimal a, decimal b)
         {
-            return a + b;
+            decimal c = a + b;
+            List<string> plusOp;
+
+            if (Session["PlusOp"] == null)
+                plusOp = new List<string>();
+            else
+                plusOp = (List<string>)Session["PlusOp"];
+            string plusReturn = a.ToString() + " + " + b.ToString() + " = " + c.ToString();
+            plusOp.Add(plusReturn);
+            Session["PlusOp"] = plusOp;
+            return c;
+        }
+
+        [WebMethod(EnableSession = true)]
+        public List<string> GetAllCalc()
+        {
+            if (Session["PlusOp"] == null)
+            {
+                List<string> plusOp = new List<string>() {
+                   "Empty"
+                };
+                return plusOp;
+            }
+            else
+                return (List<string>)Session["PlusOp"];
         }
 
         [WebMethod(Description = "Subtraction Operation", CacheDuration = 10)]

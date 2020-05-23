@@ -9,7 +9,16 @@
 //------------------------------------------------------------------------------
 
 namespace Web.WebServiceRef {
+    using System.Runtime.Serialization;
+    using System;
     
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.CollectionDataContractAttribute(Name="ArrayOfString", Namespace="http://calculatorproject.org/", ItemName="string")]
+    [System.SerializableAttribute()]
+    public class ArrayOfString : System.Collections.Generic.List<string> {
+    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://calculatorproject.org/", ConfigurationName="WebServiceRef.CalculatorBaseSoap")]
@@ -20,6 +29,13 @@ namespace Web.WebServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://calculatorproject.org/Plus", ReplyAction="*")]
         System.Threading.Tasks.Task<decimal> PlusAsync(decimal a, decimal b);
+        
+        // CODEGEN: Generating message contract since element name GetAllCalcResult from namespace http://calculatorproject.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://calculatorproject.org/GetAllCalc", ReplyAction="*")]
+        Web.WebServiceRef.GetAllCalcResponse GetAllCalc(Web.WebServiceRef.GetAllCalcRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://calculatorproject.org/GetAllCalc", ReplyAction="*")]
+        System.Threading.Tasks.Task<Web.WebServiceRef.GetAllCalcResponse> GetAllCalcAsync(Web.WebServiceRef.GetAllCalcRequest request);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://calculatorproject.org/Subtraction", ReplyAction="*")]
         decimal Subtraction(decimal a, decimal b);
@@ -38,6 +54,67 @@ namespace Web.WebServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://calculatorproject.org/Divide", ReplyAction="*")]
         System.Threading.Tasks.Task<decimal> DivideAsync(decimal a, decimal b);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllCalcRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllCalc", Namespace="http://calculatorproject.org/", Order=0)]
+        public Web.WebServiceRef.GetAllCalcRequestBody Body;
+        
+        public GetAllCalcRequest() {
+        }
+        
+        public GetAllCalcRequest(Web.WebServiceRef.GetAllCalcRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class GetAllCalcRequestBody {
+        
+        public GetAllCalcRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetAllCalcResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllCalcResponse", Namespace="http://calculatorproject.org/", Order=0)]
+        public Web.WebServiceRef.GetAllCalcResponseBody Body;
+        
+        public GetAllCalcResponse() {
+        }
+        
+        public GetAllCalcResponse(Web.WebServiceRef.GetAllCalcResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://calculatorproject.org/")]
+    public partial class GetAllCalcResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public Web.WebServiceRef.ArrayOfString GetAllCalcResult;
+        
+        public GetAllCalcResponseBody() {
+        }
+        
+        public GetAllCalcResponseBody(Web.WebServiceRef.ArrayOfString GetAllCalcResult) {
+            this.GetAllCalcResult = GetAllCalcResult;
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,6 +150,29 @@ namespace Web.WebServiceRef {
         
         public System.Threading.Tasks.Task<decimal> PlusAsync(decimal a, decimal b) {
             return base.Channel.PlusAsync(a, b);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        Web.WebServiceRef.GetAllCalcResponse Web.WebServiceRef.CalculatorBaseSoap.GetAllCalc(Web.WebServiceRef.GetAllCalcRequest request) {
+            return base.Channel.GetAllCalc(request);
+        }
+        
+        public Web.WebServiceRef.ArrayOfString GetAllCalc() {
+            Web.WebServiceRef.GetAllCalcRequest inValue = new Web.WebServiceRef.GetAllCalcRequest();
+            inValue.Body = new Web.WebServiceRef.GetAllCalcRequestBody();
+            Web.WebServiceRef.GetAllCalcResponse retVal = ((Web.WebServiceRef.CalculatorBaseSoap)(this)).GetAllCalc(inValue);
+            return retVal.Body.GetAllCalcResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<Web.WebServiceRef.GetAllCalcResponse> Web.WebServiceRef.CalculatorBaseSoap.GetAllCalcAsync(Web.WebServiceRef.GetAllCalcRequest request) {
+            return base.Channel.GetAllCalcAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<Web.WebServiceRef.GetAllCalcResponse> GetAllCalcAsync() {
+            Web.WebServiceRef.GetAllCalcRequest inValue = new Web.WebServiceRef.GetAllCalcRequest();
+            inValue.Body = new Web.WebServiceRef.GetAllCalcRequestBody();
+            return ((Web.WebServiceRef.CalculatorBaseSoap)(this)).GetAllCalcAsync(inValue);
         }
         
         public decimal Subtraction(decimal a, decimal b) {

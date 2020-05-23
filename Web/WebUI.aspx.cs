@@ -21,6 +21,8 @@ namespace Web
             decimal x = Convert.ToDecimal(txtnumberOne.Text);
             decimal y = Convert.ToDecimal(txtnumberTwo.Text);
             lblSol.Text = client.Plus(x, y).ToString();
+            grdOp.DataSource = client.GetAllCalc();
+            grdOp.DataBind();
         }
 
         protected void btnInc_Click(object sender, EventArgs e)

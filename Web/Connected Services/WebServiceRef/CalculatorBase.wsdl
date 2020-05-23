@@ -17,6 +17,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetAllCalc">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCalcResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCalcResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="Subtraction">
         <s:complexType>
           <s:sequence>
@@ -70,6 +85,12 @@
   <wsdl:message name="PlusSoapOut">
     <wsdl:part name="parameters" element="tns:PlusResponse" />
   </wsdl:message>
+  <wsdl:message name="GetAllCalcSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCalc" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCalcSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCalcResponse" />
+  </wsdl:message>
   <wsdl:message name="SubtractionSoapIn">
     <wsdl:part name="parameters" element="tns:Subtraction" />
   </wsdl:message>
@@ -90,18 +111,26 @@
   </wsdl:message>
   <wsdl:portType name="CalculatorBaseSoap">
     <wsdl:operation name="Plus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Plus Operation</wsdl:documentation>
       <wsdl:input message="tns:PlusSoapIn" />
       <wsdl:output message="tns:PlusSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllCalc">
+      <wsdl:input message="tns:GetAllCalcSoapIn" />
+      <wsdl:output message="tns:GetAllCalcSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Subtraction">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Subtraction Operation</wsdl:documentation>
       <wsdl:input message="tns:SubtractionSoapIn" />
       <wsdl:output message="tns:SubtractionSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Multiply">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Multiply Operation</wsdl:documentation>
       <wsdl:input message="tns:MultiplySoapIn" />
       <wsdl:output message="tns:MultiplySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="Divide">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Multiply Operation</wsdl:documentation>
       <wsdl:input message="tns:DivideSoapIn" />
       <wsdl:output message="tns:DivideSoapOut" />
     </wsdl:operation>
@@ -110,6 +139,15 @@
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Plus">
       <soap:operation soapAction="http://calculatorproject.org/Plus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCalc">
+      <soap:operation soapAction="http://calculatorproject.org/GetAllCalc" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -149,6 +187,15 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Plus">
       <soap12:operation soapAction="http://calculatorproject.org/Plus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCalc">
+      <soap12:operation soapAction="http://calculatorproject.org/GetAllCalc" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
